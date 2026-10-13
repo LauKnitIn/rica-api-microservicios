@@ -1,0 +1,59 @@
+info:
+  name: Registrar Publicacion
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/publicaciones"
+  body:
+    type: json
+    data: |-
+      {
+        "investigadorCorreo": "DEMOBRUNO@uptc.edu.co",
+        "titulo": "Estudio sobre BRUNO",
+        "tipo": "Articulo Cientifico",
+        "anio": 2025,
+        "detalles": {
+          "revista": "Revista de Ingenieria UPTC",
+          "doi": "10.1000/150",
+          "indexada": "Scopus"
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: 200 Response
+    request:
+      url: "{{baseUrl}}/api/publicaciones"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "investigadorCorreo": "invest@uptc.edu.co",
+            "titulo": "Estudio sobre Algoritmos Optimizados en Microservicios",
+            "tipo": "Articulo Cientifico",
+            "anio": 2026,
+            "detalles": {
+              "revista": "Revista de Ingenieria UPTC",
+              "doi": "10.1000/182",
+              "indexada": "Scopus"
+            }
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: "{}"

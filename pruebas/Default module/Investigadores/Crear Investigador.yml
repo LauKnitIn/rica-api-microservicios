@@ -1,0 +1,52 @@
+info:
+  name: Crear Investigador
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/investigadores"
+  body:
+    type: json
+    data: |-
+      {
+        "nombreCompleto": "DEMO CON BRUNO",
+        "correoInstitucional": "DEMOBRUNO@uptc.edu.co",
+        "grupoInvestigacion": "BRUNO"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: 200 Response
+    request:
+      url: "{{baseUrl}}/api/investigadores"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "nombreCompleto": "Carlos Andrés Mendoza",
+            "correoInstitucional": "carlosPrueba@uptc.edu.co",
+            "grupoInvestigacion": "lol"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "id": 1,
+            "nombreCompleto": "Laura Correa",
+            "grupoInvestigacion": "Test"
+          }

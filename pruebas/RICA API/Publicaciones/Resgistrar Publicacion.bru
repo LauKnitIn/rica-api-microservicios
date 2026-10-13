@@ -1,0 +1,25 @@
+meta {
+  name: Registrar Publicacion
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/publicaciones
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "investigadorCorreo": "invest@uptc.edu.co",
+    "titulo": "Estudio sobre Algoritmos Optimizados en Microservicios",
+    "tipo": "Articulo Cientifico",
+    "anio": 2026,
+    "detalles": {
+      "revista": "Revista de Ingenieria UPTC",
+      "doi": "10.1000/182",
+      "indexada": "Scopus"
+    }
+  }
+}

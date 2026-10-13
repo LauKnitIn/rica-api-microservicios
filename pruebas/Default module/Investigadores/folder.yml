@@ -1,0 +1,10 @@
+info:
+  name: Investigadores
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080

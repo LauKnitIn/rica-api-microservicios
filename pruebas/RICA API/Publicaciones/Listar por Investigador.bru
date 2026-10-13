@@ -1,0 +1,15 @@
+meta {
+  name: Listar Por Investigador
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/publicaciones?investigadorCorreo=invest@uptc.edu.co
+  body: none
+  auth: none
+}
+
+params:query {
+  investigadorCorreo: invest@uptc.edu.co
+}

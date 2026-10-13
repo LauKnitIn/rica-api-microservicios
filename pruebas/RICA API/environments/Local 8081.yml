@@ -1,0 +1,5 @@
+name: Local 8081
+variables:
+  - name: baseUrl
+    value: http://localhost:8081
+    description: ""
