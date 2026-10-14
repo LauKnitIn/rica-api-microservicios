@@ -8,6 +8,11 @@ spring:
     url: jdbc:postgresql://localhost:5432/rica
     username: rica
     password: rica
+    
+grpc:
+  server:
+    port: 9090
+
 jpa:
     hibernate:
       ddl-auto: validate 

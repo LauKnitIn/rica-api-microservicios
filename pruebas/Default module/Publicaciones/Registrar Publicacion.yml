@@ -13,10 +13,10 @@ http:
         "investigadorCorreo": "DEMOBRUNO@uptc.edu.co",
         "titulo": "Estudio sobre BRUNO",
         "tipo": "Articulo Cientifico",
-        "anio": 2025,
+        "anio": 2024,
         "detalles": {
           "revista": "Revista de Ingenieria UPTC",
-          "doi": "10.1000/150",
+          "doi": "10.1000/151",
           "indexada": "Scopus"
         }
       }
