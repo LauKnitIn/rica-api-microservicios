@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import investigadoresservice.compartido.RecursoNoEncontradoException;
-import investigadoresservice.investigadores.dominio.CorreoDuplicadoException;
 import investigadoresservice.investigadores.dominio.Investigador;
 
 
@@ -22,10 +21,10 @@ public class InvestigadorService implements InvestigadorUseCase {
     public InvestigadorService(RepositorioInvestigadores repositorioInvestigadores,
                            InvestigadorFactory investigadorFactory,
                            PublicadorEventos publicadorEventos) {
-    this.investigadorRepository = repositorioInvestigadores;
-    this.investigadorFactory = investigadorFactory;
-    this.publicadorEventos = publicadorEventos;
-}
+        this.investigadorRepository = repositorioInvestigadores;
+        this.investigadorFactory = investigadorFactory;
+        this.publicadorEventos = publicadorEventos;
+    }
 
     public List<Investigador> listarTodos() {
         return investigadorRepository.listarTodos();
@@ -51,4 +50,29 @@ public class InvestigadorService implements InvestigadorUseCase {
                     "nombreCompleto", nombreCompleto));
         return guardado;
     }  
+
+    @Override
+    @Transactional
+    public void iniciarEliminacion(Long id) {
+        Investigador investigador = buscarPorId(id);
+        if (investigador.estaEnEliminacion()) {
+            return; 
+        }
+        investigador.marcarEnEliminacion();
+        investigadorRepository.guardar(investigador);
+
+        String correo = investigador.getCorreoInstitucional().valor();
+        publicadorEventos.publicar(
+                "investigadores.en-eliminacion",
+                correo,
+                Map.of("correoInstitucional", correo));
+    }
+
+    @Override
+    @Transactional
+    public void confirmarEliminacion(String correoInstitucional) {
+        investigadorRepository.buscarPorCorreo(correoInstitucional)
+                .filter(Investigador::estaEnEliminacion)
+                .ifPresent(investigadorRepository::eliminar);
+    }
 }

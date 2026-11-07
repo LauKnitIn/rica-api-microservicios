@@ -10,13 +10,13 @@ http:
     type: json
     data: |-
       {
-        "investigadorCorreo": "DEMOBRUNO@uptc.edu.co",
-        "titulo": "Estudio sobre BRUNO",
+        "investigadorCorreo": "comunicacionDemoTestV4@uptc.edu.co",
+        "titulo": "Estudio sobre comunicacion",
         "tipo": "Articulo Cientifico",
-        "anio": 2017,
+        "anio": 2016,
         "detalles": {
           "revista": "Revista de Ingenieria UPTC",
-          "doi": "10.1000/151",
+          "doi": "10.1000/152",
           "indexada": "Scopus"
         }
       }
