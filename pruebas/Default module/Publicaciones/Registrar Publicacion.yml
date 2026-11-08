@@ -10,8 +10,8 @@ http:
     type: json
     data: |-
       {
-        "investigadorCorreo": "comunicacionDemoTestV4@uptc.edu.co",
-        "titulo": "Estudio sobre comunicacion",
+        "investigadorCorreo": "luis.mora@uptc.edu.co",
+        "titulo": "Estudio sobre comunicacion 1",
         "tipo": "Articulo Cientifico",
         "anio": 2016,
         "detalles": {

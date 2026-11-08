@@ -10,8 +10,8 @@ http:
     type: json
     data: |-
       {
-        "nombreCompleto": "DEMO comunicacion",
-        "correoInstitucional": "comunicacionDemoTestV4@uptc.edu.co",
+        "nombreCompleto": "DEMO cqrs",
+        "correoInstitucional": "luis.mora@uptc.edu.co",
         "grupoInvestigacion": "comunicacion"
       }
   auth: inherit
