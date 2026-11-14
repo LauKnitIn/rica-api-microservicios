@@ -15,14 +15,16 @@ public class PublicacionService {
     private final PublicacionRepository publicacionRepository;
     private final VerificadorInvestigador investigadorRepository;
     private final LimitePublicacionesAnualesService limitePublicacionesService;
-
+    private final PublicadorEventosPublicaciones publicadorEventos;
 
     public PublicacionService(PublicacionRepository publicacionRepository,
                                VerificadorInvestigador investigadorRepository,
-                                LimitePublicacionesAnualesService limitePublicacionesAnualesService) {
+                                LimitePublicacionesAnualesService limitePublicacionesAnualesService,
+                                PublicadorEventosPublicaciones publicadorEventos) {
         this.publicacionRepository = publicacionRepository;
         this.investigadorRepository = investigadorRepository;
         this.limitePublicacionesService = limitePublicacionesAnualesService;
+        this.publicadorEventos = publicadorEventos;
     }
 
     public Publicacion registrar(Publicacion publicacion) {
@@ -35,7 +37,9 @@ public class PublicacionService {
                 "El investigador " + publicacion.getInvestigadorCorreo() + "ya tiene 5 publicaciones registradas este año"
             );
         }
-        return publicacionRepository.save(publicacion);
+        Publicacion guardada = publicacionRepository.save(publicacion);
+        publicadorEventos.publicacionRegistrada(guardada);
+        return guardada;
     }
 
     public List<Publicacion> listarPorInvestigador(String investigadorCorreo) {

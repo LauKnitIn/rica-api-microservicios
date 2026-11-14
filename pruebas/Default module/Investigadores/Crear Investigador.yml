@@ -10,9 +10,9 @@ http:
     type: json
     data: |-
       {
-        "nombreCompleto": "DEMO CON BRUNO",
-        "correoInstitucional": "DEMOBRUNO@uptc.edu.co",
-        "grupoInvestigacion": "BRUNO"
+        "nombreCompleto": "DEMO cqrs otro investigador",
+        "correoInstitucional": "luis.moraV2@uptc.edu.co",
+        "grupoInvestigacion": "comunicacion"
       }
   auth: inherit
 
