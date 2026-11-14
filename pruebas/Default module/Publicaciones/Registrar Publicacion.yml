@@ -11,9 +11,9 @@ http:
     data: |-
       {
         "investigadorCorreo": "luis.mora@uptc.edu.co",
-        "titulo": "Estudio sobre comunicacion 1",
+        "titulo": "Estudio sobre comunicacion 3",
         "tipo": "Articulo Cientifico",
-        "anio": 2016,
+        "anio": 2015,
         "detalles": {
           "revista": "Revista de Ingenieria UPTC",
           "doi": "10.1000/152",
