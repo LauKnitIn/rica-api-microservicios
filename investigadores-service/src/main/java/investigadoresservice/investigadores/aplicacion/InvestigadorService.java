@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import investigadoresservice.compartido.RecursoNoEncontradoException;
+import investigadoresservice.investigadores.dominio.CorreoDuplicadoException;
 import investigadoresservice.investigadores.dominio.Investigador;
 
 
@@ -39,6 +40,10 @@ public class InvestigadorService implements InvestigadorUseCase {
    @Override
     @Transactional
     public Investigador registrar(String nombreCompleto, String correoInstitucional, String grupoInvestigacion) {
+        if (investigadorRepository.existeCorreo(correoInstitucional)) {
+            throw new CorreoDuplicadoException("El correo institucional ya está registrado: " + correoInstitucional);
+        }
+        
         Investigador investigador = investigadorFactory.crear(nombreCompleto, correoInstitucional, grupoInvestigacion);
         Investigador guardado = investigadorRepository.guardar(investigador);
 
