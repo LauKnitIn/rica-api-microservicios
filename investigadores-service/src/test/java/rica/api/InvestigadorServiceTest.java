@@ -59,7 +59,7 @@ public class InvestigadorServiceTest {
     void registrarRechazaCorreoInstitucionalDuplicado() {
         Investigador nuevo = new Investigador(null, "Carlos Ruiz", new CorreoInstitucional("carlos.ruiz@uptc.edu.co"), "GIT-UPTC");
     
-        when(investigadorFactory.crear("Carlos Ruiz", "carlos.ruiz@uptc.edu.co", "GIT-UPTC")).thenReturn(nuevo);
+        //when(investigadorFactory.crear("Carlos Ruiz", "carlos.ruiz@uptc.edu.co", "GIT-UPTC")).thenReturn(nuevo);
     
         when(investigadorRepository.existeCorreo("carlos.ruiz@uptc.edu.co")).thenReturn(true);
 
